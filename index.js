@@ -1,6 +1,7 @@
 import galleryItems from './app.js';
 import galleryRefs from './ref.js';
 
+
 const {
   gallery,
   modalWindow,
@@ -8,6 +9,7 @@ const {
   closeModalButton,
   backdrop,
 } = galleryRefs;
+
 
 // Создание и рендер разметки по массиву данных
 
@@ -82,7 +84,8 @@ window.addEventListener('keydown', scrollImages);
 
 function scrollImages(e) {
   const originalImages = galleryItems.map(({ original }) => original);
-  let newPlace = originalImages.indexOf(imageInsideModalWindow.src);
+  let newPlace = originalImages.findIndex(item => item === imageInsideModalWindow.src);
+
   if (e.code === 'ArrowRight') {
     newPlace += 1;
     if (newPlace === originalImages.length) {
